@@ -8,7 +8,7 @@ export const Header = () => {
 
   return (
     <>
-      <section className="flex lg:flex-col justify-between items-center h-full lg:py-4 z-10  relative">
+      <section className="bg-neutral-900 flex lg:flex-col justify-between items-center h-full lg:py-4 z-10  relative">
         <Link href="/">
           {/* no use for anchor */}
           {jsxVar}
@@ -30,7 +30,7 @@ export const Header = () => {
       </section>
 
       <nav
-        className={`absolute left-0 -top-full ${
+        className={`z-0 absolute left-0 -top-full ${
           menuOpen ? 'translate-y-full' : ''
         } transition-transform transform-gpu w-screen h-screen bg-neutral-900 lg:w-screen-1/3`}
       >
