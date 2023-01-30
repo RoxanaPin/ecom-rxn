@@ -1,25 +1,24 @@
-import { baseUrl } from '@/index';
+import { useProducts } from '@/hooks';
+import { UiContext } from '@/pages/_app';
 import { css } from '@emotion/css';
-import { useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { ProductTile } from '.';
 
-export const ProductGrid = ({ perRow = '4/row' }) => {
-  const [products, setProducts] = useState([]);
+export const ProductGrid = () => {
+  const { products, loading, error } = useProducts();
+  const { itemsPerRow: perRow } = useContext(UiContext);
 
   // useMemo
   const itemsPerRow = parseInt(perRow);
 
-  console.log('render product grid');
+  // evaluate loading
+  if (loading === true) {
+    return <>...loading</>;
+  }
 
-  useEffect(() => {
-    fetch(`${baseUrl}/products`)
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        setProducts(data);
-      });
-  }, [setProducts]);
+  if (error.length > 0) {
+    return <>{error}</>;
+  }
 
   if (products.length < 1) {
     return <>There are no products</>;
