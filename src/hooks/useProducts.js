@@ -30,5 +30,5 @@ export const useProducts = () => {
     }
   }, [setProducts]);
 
-  return { products, setProducts, loading, error };
+  return { products, loading, error };
 };
