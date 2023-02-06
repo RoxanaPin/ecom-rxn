@@ -1,5 +1,5 @@
 import { CartControls } from '@/components/cart';
-import { GridControls, ProductGrid } from '@/components/catalog';
+import { GridControls, Pagination, ProductGrid } from '@/components/catalog';
 import { Layout } from '@/layouts';
 import Head from 'next/head';
 
@@ -21,6 +21,10 @@ export default function Home() {
 
           <section className="mt-16">
             <ProductGrid></ProductGrid>
+          </section>
+
+          <section>
+            <Pagination></Pagination>
           </section>
         </main>
       </Layout>
