@@ -1,3 +1,4 @@
+import { useIsMobile } from '@/hooks';
 import { UiContext } from '@/pages/_app';
 import { useContext } from 'react';
 
@@ -6,9 +7,14 @@ const buttonClasses =
 
 export const GridControls = () => {
   const { itemsPerRow, setItemsPerRow } = useContext(UiContext);
+  const isMobile = useIsMobile();
+
+  if (isMobile === true) {
+    return <></>;
+  }
 
   return (
-    <ul className="border border-l-0 border-zinc-200 hidden lg:flex">
+    <ul className="border border-l-0 border-zinc-200 flex">
       <li>
         <button
           type="button"

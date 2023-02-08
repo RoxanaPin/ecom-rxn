@@ -1,8 +1,20 @@
+import { cartContext } from '@/contexts';
+import { useContext } from 'react';
+import { CartLineItem } from '.';
+
 export const CartDisplay = () => {
+  const { cartProducts, loading } = useContext(cartContext);
+
+  if (loading === true) {
+    return '...cart is loading';
+  }
+
   return (
     <table>
       <thead>
         <tr>
+          <th></th>
+          <th></th>
           <th>Product</th>
           <th>Price</th>
           <th>Quantity</th>
@@ -11,12 +23,14 @@ export const CartDisplay = () => {
       </thead>
 
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>2</td>
-          <td>3</td>
-          <td>4</td>
-        </tr>
+        {cartProducts.map((cartProduct) => {
+          return (
+            <CartLineItem
+              cartProduct={cartProduct}
+              key={cartProduct.productId}
+            ></CartLineItem>
+          );
+        })}
       </tbody>
     </table>
   );
