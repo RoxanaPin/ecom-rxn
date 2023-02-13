@@ -28,6 +28,7 @@ export const useProduct = (productId) => {
           });
       } else {
         setProduct(productCache[productId]);
+        setLoading(false);
       }
     }
   }, [setProduct, productId]);

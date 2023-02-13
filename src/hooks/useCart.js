@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 export const useCart = (cartId = 2) => {
   const [cartProducts, setCartProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [userId = 0, setUserId] = useState(0);
+  // const userId = state.userId || 0
 
   useEffect(() => {
     fetch(`${baseUrl}/carts/${cartId}`)
@@ -11,8 +13,9 @@ export const useCart = (cartId = 2) => {
         return response.json();
       })
       .then((cart) => {
-        const { products } = cart;
+        const { products, userId } = cart;
 
+        setUserId(userId);
         setCartProducts(products);
       })
       .finally(() => {
@@ -20,5 +23,5 @@ export const useCart = (cartId = 2) => {
       });
   }, [setCartProducts, cartId, setLoading]);
 
-  return { cartProducts, loading, cartId };
+  return { cartProducts, loading, cartId, userId, setCartProducts };
 };

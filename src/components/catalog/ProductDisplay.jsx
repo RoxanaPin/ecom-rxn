@@ -1,6 +1,7 @@
 import { useProduct } from '@/hooks';
 import Image from 'next/legacy/image';
 import { AddToCart, ProductPrice } from '.';
+import { CartQuantity } from '../cart';
 import { Separator } from '../ui';
 
 export const ProductDisplay = ({ productId }) => {
